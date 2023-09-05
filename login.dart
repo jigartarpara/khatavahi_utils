@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Email',
-                hintText: 'Enter valid mail id',
+                hintText: 'Enter valid mail id ',
               ),
             ),
           ),
