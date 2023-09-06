@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, this.afterLogin, this.onForgetPassword});
+
+  final void Function()? afterLogin;
+  final void Function()? onForgetPassword;
+
+  void onLogin() {
+    afterLogin!();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Image.asset(
             'assets/images/logo.png',
@@ -35,15 +42,21 @@ class LoginScreen extends StatelessWidget {
                   labelText: 'Password'),
             ),
           ),
-          const SizedBox(height: 20),
+          TextButton(
+            onPressed: onForgetPassword,
+            child: const Text(
+              'Forgot Password',
+              style: TextStyle(color: Colors.blue, fontSize: 15),
+            ),
+          ),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: onLogin,
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.black,
             ),
             icon: const Icon(Icons.login),
             label: const Text('Login'),
-          )
+          ),
         ],
       ),
     );
